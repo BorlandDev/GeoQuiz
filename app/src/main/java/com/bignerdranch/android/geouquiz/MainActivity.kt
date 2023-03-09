@@ -1,10 +1,14 @@
 package com.bignerdranch.android.geouquiz
 
 import android.app.Activity
+import android.graphics.RenderEffect
+import android.graphics.Shader
+import android.os.Build
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.bignerdranch.android.geouquiz.databinding.ActivityMainBinding
 
@@ -32,6 +36,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         setListeners()
         updateQuestion()
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S)
+        blurCheatBtn()
     }
 
     private fun setListeners() {
@@ -73,5 +80,15 @@ class MainActivity : AppCompatActivity() {
             else -> R.string.incorrect_toast
         }
         Toast.makeText(this, messageResId, Toast.LENGTH_SHORT).show()
+    }
+
+    @RequiresApi(Build.VERSION_CODES.S)
+    private fun blurCheatBtn() {
+        val effect = RenderEffect.createBlurEffect(
+            10.0f,
+            10.0f,
+            Shader.TileMode.CLAMP
+        )
+        binding.cheatButton.setRenderEffect(effect)
     }
 }
