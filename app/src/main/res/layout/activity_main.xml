@@ -7,13 +7,15 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context="com.bignerdranch.android.geouquiz.MainActivity">
 
     <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/question_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:padding="24dp"
-        android:text="@string/question_text" />
+        tools:text="@string/question_australia" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -32,4 +34,19 @@
             android:layout_height="wrap_content"
             android:text="@string/false_button" />
     </LinearLayout>
+
+    <Button
+        android:id="@+id/cheat_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/cheat_button" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/next_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/next_button"
+        app:icon="@drawable/arrow_right"
+        app:iconGravity="end" />
 </LinearLayout>
